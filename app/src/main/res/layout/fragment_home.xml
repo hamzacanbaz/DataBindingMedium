@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.canbazdev.databindingmedium.HomeViewModel" />
+
+        <import type="java.util.List" />
+
+        <variable
+            name="numberList"
+            type="List&lt;Integer>" />
+
+        <variable
+            name="customPadding"
+            type="int" />
+
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".HomeFragment">
+
+
+        <EditText
+            android:id="@+id/tvCharacterName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:afterTextChanged="@{viewmodel.updateName}"
+            android:text="@{viewmodel.name}"
+            android:textSize="20dp"
+            tools:text="Vera" />
+
+        <TextView
+            android:id="@+id/tvCharacterSurname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:text="@{viewmodel.lastName}"
+            android:textSize="20dp"
+            tools:text="Pollux" />
+
+
+        <TextView
+            android:id="@+id/tvCharacterNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:background="@android:color/holo_blue_light"
+            android:text="12"
+            android:textSize="20dp"
+            app:customPadding="@{customPadding}"
+            tools:text="12" />
+
+        <Button
+            android:id="@+id/btnReverseName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="20dp"
+            android:onClick="@{() -> viewmodel.reverseName()}"
+            android:text="Reverse Name" />
+
+
+    </LinearLayout>
+</layout>
